@@ -18,6 +18,17 @@
     color:var(--text); min-height:100vh;
   }
   header.hero{ text-align:center; padding:56px 20px 28px; }
+  .lang-switch{
+    display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-bottom:30px;
+  }
+  .lang-switch button{
+    border:1px solid #6b4a9e; background:transparent; color:var(--muted);
+    border-radius:999px; padding:5px 12px; font-size:.78rem; cursor:pointer;
+    transition:all .18s ease;
+  }
+  .lang-switch button.active, .lang-switch button:hover{
+    background:var(--gold); border-color:var(--gold); color:#1c0f30; font-weight:600;
+  }
   .hero h1{
     font-size:2.1rem; letter-spacing:.5px; line-height:1.15;
     background:linear-gradient(135deg,var(--gold-light),var(--gold) 60%,#b57f1f);
@@ -69,13 +80,20 @@
 <body>
 
 <header class="hero">
+  <nav class="lang-switch" aria-label="Language">
+    <button type="button" data-lang="es">ES</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="ko">한국어</button>
+    <button type="button" data-lang="pt">PT</button>
+    <button type="button" data-lang="zh">中文</button>
+  </nav>
   <h1>Imaginarium Lab Music</h1>
-  <p class="tagline">Música original creada con inteligencia artificial</p>
-  <p class="note">Bienestar · Brainwaves · Fantasía · Ciencia ficción</p>
+  <p class="tagline" data-i18n="tagline">Música original creada con inteligencia artificial</p>
+  <p class="note" data-i18n="note">Bienestar · Brainwaves · Fantasía · Ciencia ficción</p>
 </header>
 
 <nav class="filters" aria-label="Filtrar por género">
-  <button class="chip active" data-genre="all">Todos</button>
+  <button class="chip active" data-genre="all" data-i18n="all">Todos</button>
   <button class="chip" data-genre="brazilian-pop">Brazilian Pop</button>
   <button class="chip" data-genre="k-pop">K-Pop</button>
   <button class="chip" data-genre="latin">Latin</button>
@@ -89,8 +107,8 @@
     <img class="cover" src="assets/covers/nao-sou-mais-o-mesmo.jpg" alt="Portada de Não Sou Mais o Mesmo">
     <div class="body">
       <h2>Não Sou Mais o Mesmo</h2>
-      <div class="meta"><span class="tag">Português</span><span class="tag">Brazilian Pop</span></div>
-      <div class="status"><a class="btn-live" href="https://open.spotify.com/track/0HDSZiUeMpJzy6V2AU5SU3" target="_blank" rel="noopener">Escuchar en Spotify</a></div>
+      <div class="meta"><span class="tag" data-lang-name="pt">Portugués</span><span class="tag">Brazilian Pop</span></div>
+      <div class="status"><a class="btn-live" data-i18n="listenSpotify" href="https://open.spotify.com/track/0HDSZiUeMpJzy6V2AU5SU3" target="_blank" rel="noopener">Escuchar en Spotify</a></div>
     </div>
   </article>
 
@@ -98,8 +116,8 @@
     <img class="cover" src="assets/covers/new-me-ko.jpg" alt="Portada de New Me">
     <div class="body">
       <h2>New Me</h2>
-      <div class="meta"><span class="tag">한국어</span><span class="tag">K-Pop</span></div>
-      <div class="status"><a class="btn-live" href="https://open.spotify.com/track/4mw6kP7yurLqedK6H2I9K0" target="_blank" rel="noopener">Escuchar en Spotify</a></div>
+      <div class="meta"><span class="tag" data-lang-name="ko">Coreano</span><span class="tag">K-Pop</span></div>
+      <div class="status"><a class="btn-live" data-i18n="listenSpotify" href="https://open.spotify.com/track/4mw6kP7yurLqedK6H2I9K0" target="_blank" rel="noopener">Escuchar en Spotify</a></div>
     </div>
   </article>
 
@@ -107,8 +125,8 @@
     <img class="cover" src="assets/covers/la-bella-que-subio-al-cielo.jpg" alt="Portada de La Bella Que Subió al Cielo">
     <div class="body">
       <h2>La Bella Que Subió al Cielo</h2>
-      <div class="meta"><span class="tag">Español</span><span class="tag">Latin</span></div>
-      <div class="status"><a class="btn-live" href="https://open.spotify.com/artist/2Jgy66D5SPVx9g6RxZlqrZ" target="_blank" rel="noopener">Escuchar en Spotify</a></div>
+      <div class="meta"><span class="tag" data-lang-name="es">Español</span><span class="tag">Latin</span></div>
+      <div class="status"><a class="btn-live" data-i18n="listenSpotify" href="https://open.spotify.com/artist/2Jgy66D5SPVx9g6RxZlqrZ" target="_blank" rel="noopener">Escuchar en Spotify</a></div>
     </div>
   </article>
 
@@ -116,8 +134,8 @@
     <img class="cover" src="assets/covers/mariposas-amarillas.jpg" alt="Portada de Mariposas Amarillas">
     <div class="body">
       <h2>Mariposas Amarillas</h2>
-      <div class="meta"><span class="tag">Español</span><span class="tag">Latin Folk</span></div>
-      <div class="status"><a class="btn-live" href="https://distrokid.com/hyperfollow/imaginariumlab/mariposas-amarillas" target="_blank" rel="noopener">Escuchar ahora</a></div>
+      <div class="meta"><span class="tag" data-lang-name="es">Español</span><span class="tag">Latin Folk</span></div>
+      <div class="status"><a class="btn-live" data-i18n="listenNow" href="https://distrokid.com/hyperfollow/imaginariumlab/mariposas-amarillas" target="_blank" rel="noopener">Escuchar ahora</a></div>
     </div>
   </article>
 
@@ -125,8 +143,8 @@
     <img class="cover" src="assets/covers/no-longer-the-old-me-zh.jpg" alt="Portada de No Longer the Old Me">
     <div class="body">
       <h2>No Longer the Old Me</h2>
-      <div class="meta"><span class="tag">中文</span><span class="tag">C-Pop</span></div>
-      <div class="status"><span class="badge-soon">Próximamente · Estreno 19 oct 2026</span></div>
+      <div class="meta"><span class="tag" data-lang-name="zh">Chino</span><span class="tag">C-Pop</span></div>
+      <div class="status"><span class="badge-soon"><span data-i18n="comingSoon">Próximamente</span> · <span data-i18n="releaseWord">Estreno</span> <span class="release-date" data-date="2026-10-19">19 oct 2026</span></span></div>
     </div>
   </article>
 
@@ -135,6 +153,128 @@
 <footer>© 2026 Imaginarium Lab Music</footer>
 
 <script>
+  const I18N = {
+    es: {
+      metaDescription: "Música original creada con inteligencia artificial: bienestar, brainwaves, fantasía y ciencia ficción.",
+      tagline: "Música original creada con inteligencia artificial",
+      note: "Bienestar · Brainwaves · Fantasía · Ciencia ficción",
+      filtersLabel: "Filtrar por género",
+      all: "Todos",
+      listenSpotify: "Escuchar en Spotify",
+      listenNow: "Escuchar ahora",
+      comingSoon: "Próximamente",
+      releaseWord: "Estreno",
+      coverOf: "Portada de {title}",
+      langNames: { pt: "Portugués", ko: "Coreano", es: "Español", zh: "Chino" }
+    },
+    en: {
+      metaDescription: "Original music created with artificial intelligence: wellness, brainwaves, fantasy and science fiction.",
+      tagline: "Original music created with artificial intelligence",
+      note: "Wellness · Brainwaves · Fantasy · Science Fiction",
+      filtersLabel: "Filter by genre",
+      all: "All",
+      listenSpotify: "Listen on Spotify",
+      listenNow: "Listen now",
+      comingSoon: "Coming soon",
+      releaseWord: "Release",
+      coverOf: "{title} cover art",
+      langNames: { pt: "Portuguese", ko: "Korean", es: "Spanish", zh: "Chinese" }
+    },
+    ko: {
+      metaDescription: "인공지능이 만든 오리지널 음악: 웰니스, 브레인웨이브, 판타지, SF.",
+      tagline: "인공지능이 만든 오리지널 음악",
+      note: "웰니스 · 브레인웨이브 · 판타지 · SF",
+      filtersLabel: "장르별 필터",
+      all: "전체",
+      listenSpotify: "Spotify에서 듣기",
+      listenNow: "지금 듣기",
+      comingSoon: "곧 출시",
+      releaseWord: "발매",
+      coverOf: "{title} 앨범 커버",
+      langNames: { pt: "포르투갈어", ko: "한국어", es: "스페인어", zh: "중국어" }
+    },
+    pt: {
+      metaDescription: "Música original criada com inteligência artificial: bem-estar, brainwaves, fantasia e ficção científica.",
+      tagline: "Música original criada com inteligência artificial",
+      note: "Bem-estar · Brainwaves · Fantasia · Ficção científica",
+      filtersLabel: "Filtrar por gênero",
+      all: "Todos",
+      listenSpotify: "Ouvir no Spotify",
+      listenNow: "Ouvir agora",
+      comingSoon: "Em breve",
+      releaseWord: "Lançamento",
+      coverOf: "Capa de {title}",
+      langNames: { pt: "Português", ko: "Coreano", es: "Espanhol", zh: "Chinês" }
+    },
+    zh: {
+      metaDescription: "由人工智能创作的原创音乐：身心疗愈、脑电波、奇幻与科幻。",
+      tagline: "由人工智能创作的原创音乐",
+      note: "身心疗愈 · 脑电波 · 奇幻 · 科幻",
+      filtersLabel: "按流派筛选",
+      all: "全部",
+      listenSpotify: "在 Spotify 收听",
+      listenNow: "立即收听",
+      comingSoon: "即将发布",
+      releaseWord: "发行",
+      coverOf: "{title} 专辑封面",
+      langNames: { pt: "葡萄牙语", ko: "韩语", es: "西班牙语", zh: "中文" }
+    }
+  };
+  const LOCALES = { es: "es", en: "en-US", ko: "ko-KR", pt: "pt-BR", zh: "zh-CN" };
+  const HTML_LANG = { es: "es", en: "en", ko: "ko", pt: "pt", zh: "zh-CN" };
+  const STORAGE_KEY = "ilm-lang";
+
+  function detectLang() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved && I18N[saved]) return saved;
+    } catch (e) {}
+    const nav = (navigator.language || "es").toLowerCase();
+    if (nav.startsWith("en")) return "en";
+    if (nav.startsWith("ko")) return "ko";
+    if (nav.startsWith("pt")) return "pt";
+    if (nav.startsWith("zh")) return "zh";
+    if (nav.startsWith("es")) return "es";
+    return "es";
+  }
+
+  function applyLang(lang) {
+    const t = I18N[lang];
+    if (!t) return;
+    document.documentElement.lang = HTML_LANG[lang];
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", t.metaDescription);
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (t[key]) el.textContent = t[key];
+    });
+    document.querySelectorAll("[data-lang-name]").forEach(el => {
+      const name = t.langNames[el.getAttribute("data-lang-name")];
+      if (name) el.textContent = name;
+    });
+    document.querySelectorAll(".card").forEach(card => {
+      const title = card.querySelector("h2").textContent;
+      const img = card.querySelector("img.cover");
+      if (img) img.alt = t.coverOf.replace("{title}", title);
+    });
+    document.querySelectorAll(".release-date").forEach(el => {
+      const d = new Date(el.getAttribute("data-date") + "T00:00:00");
+      el.textContent = new Intl.DateTimeFormat(LOCALES[lang],
+        { day: "numeric", month: "short", year: "numeric" }).format(d);
+    });
+    const filters = document.querySelector(".filters");
+    if (filters) filters.setAttribute("aria-label", t.filtersLabel);
+    document.querySelectorAll(".lang-switch button").forEach(btn => {
+      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    });
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+  }
+
+  document.querySelectorAll(".lang-switch button").forEach(btn => {
+    btn.addEventListener("click", () => applyLang(btn.getAttribute("data-lang")));
+  });
+  applyLang(detectLang());
+
   const chips = document.querySelectorAll('.chip');
   const cards = document.querySelectorAll('.card');
   chips.forEach(chip => {
